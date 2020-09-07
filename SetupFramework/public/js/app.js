@@ -65841,6 +65841,42 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/components/Ems.js":
+/*!****************************************!*\
+  !*** ./resources/js/components/Ems.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function Ems() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "shadow p-3 mb-5 bg-white rounded",
+    style: {
+      marginTop: 40
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    className: "text-center"
+  }, "Emilio Aguilera Carl\xEDn"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "text-center"
+  }, "A01351355"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "storage/ems.jpg",
+    alt: "Foto de Emilio Aguilera",
+    height: "240px",
+    width: "240px",
+    className: "rounded mx-auto d-block"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Experiencia en desarrollo web"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "La experiencia con la que cuento en desarrollo web es el uso de HTML, CSS, JavaScript y el uso de PHP. ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "En cuanto a base de Datos, mi experiencia es con MySQL.  ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "En cuanto a frameworks, a\xFAn no tengo experiencia, pero me estoy adentrando en el uso de Laravel y React. ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Por \xFAltimo, he usado librer\xEDas, Bootstrap y Materialize."));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Ems);
+
+/***/ }),
+
 /***/ "./resources/js/components/Index.js":
 /*!******************************************!*\
   !*** ./resources/js/components/Index.js ***!
@@ -65856,6 +65892,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Main__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Main */ "./resources/js/components/Main.js");
 /* harmony import */ var _Mau__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Mau */ "./resources/js/components/Mau.js");
+/* harmony import */ var _Ems__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Ems */ "./resources/js/components/Ems.js");
+
 
 
 
@@ -65867,6 +65905,10 @@ if (document.getElementById('root')) {
 
 if (window.location.pathname === '/mau' && document.getElementById('profile')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Mau__WEBPACK_IMPORTED_MODULE_3__["default"], null), document.getElementById('profile'));
+}
+
+if (window.location.pathname === '/ems' && document.getElementById('profile')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Ems__WEBPACK_IMPORTED_MODULE_4__["default"], null), document.getElementById('profile'));
 }
 
 /***/ }),
@@ -65890,8 +65932,8 @@ function Links() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "mau"
   }, "Mau"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "https://laracasts.com"
-  }, "Ems"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "ems"
+  }, "Emilio"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "https://laravel-news.com"
   }, "Ivan"));
 }
@@ -66000,8 +66042,8 @@ function Titulo() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Mauricio\Documents\Tec\5to\Bloque2\LDAW\ldaw\SetupFramework\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Mauricio\Documents\Tec\5to\Bloque2\LDAW\ldaw\SetupFramework\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Ems\Desktop\BLOQUE\ldaw\SetupFramework\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Ems\Desktop\BLOQUE\ldaw\SetupFramework\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
