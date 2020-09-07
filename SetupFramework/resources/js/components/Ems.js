@@ -9,9 +9,10 @@ function Ems() {
             <hr/>
             <h2>Experiencia en desarrollo web</h2>
             <p>
-                Mi experiencia en desarrollo web consiste en dominio de lenguajes para front-end (HTML5, CSS, JS), y para back-end domino el lenguaje PHP. <br/>
-                Tengo experiencia on manejo de bases de datos en MySQL. <br/>
-                No tengo experiencia con ningun framework, pero he utilizado librerías de CSS como Bootstrap, Materialize y UIKit.
+                La experiencia con la que cuento en desarrollo web es el uso de HTML, CSS, JavaScript y el uso de PHP. <br/>
+                En cuanto a base de Datos, mi experiencia es con MySQL.  <br/>
+                En cuanto a frameworks, aún no tengo experiencia, pero me estoy adentrando en el uso de Laravel y React. <br/>
+                Por último, he usado librerías, Bootstrap y Materialize. 
             </p>
         </div>
     )
