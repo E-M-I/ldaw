@@ -66042,8 +66042,8 @@ function Titulo() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Ems\Desktop\BLOQUE\ldaw\SetupFramework\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Ems\Desktop\BLOQUE\ldaw\SetupFramework\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Mauricio\Documents\Tec\5to\Bloque2\LDAW\ldaw\SetupFramework\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Mauricio\Documents\Tec\5to\Bloque2\LDAW\ldaw\SetupFramework\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
