@@ -24,3 +24,10 @@ Route::get('/mau', function () {
 Route::get('/ivan', function () {
     return view('ivan');
 });
+
+
+
+
+Route::get('/ems', function () {
+    return view('ems');
+});

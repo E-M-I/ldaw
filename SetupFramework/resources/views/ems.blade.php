@@ -8,7 +8,20 @@
 </head>
 <body>
     <div id="profile" class="container">
-        
+        <div class="shadow p-3 mb-5 bg-white rounded" style="margin-top = 40">
+                <h1 class="text-center">Emilio Aguilera Carlín</h1>
+                <h2 class="text-center">A01351355</h2>
+                <img src="<?= url('/img/ems.jpg'); ?>" alt="Foto de Emilio Aguilera" height="240px" width="240px" class="rounded mx-auto d-block" />
+                <hr/>
+                <h2>Experiencia en desarrollo web</h2>
+                <p>
+                    La experiencia con la que cuento en desarrollo web es el uso de HTML, CSS, JavaScript y el uso de PHP <br/>
+                    En cuanto a bade de datos, mi experiencia es con MySQL <br/>
+                    En cuanto a frameworks, aún no tengo experiencia, pero me estoy adentrando en el uso de Laravel y React.<br/>
+                    Por último, he usado librerías, Bootstrap y Materialize.
+                </p>
+            </div>
+        </div>
     </div>
 </body>
 <script type="text/javascript" src="js/app.js"></script>
