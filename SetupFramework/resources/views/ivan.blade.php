@@ -8,7 +8,6 @@
 </head>
 <body>
     <div id="profile" class="container">
-        
     </div>
 </body>
 <script type="text/javascript" src="js/app.js"></script>
