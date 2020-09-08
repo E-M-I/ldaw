@@ -65943,12 +65943,12 @@ function Ivan() {
   }, "Iv\xE1n Alejandro D\xEDaz Peralta"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     className: "text-center"
   }, "A01700486"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: "storage/ems.jpg",
+    src: "storage/ivan.jpg",
     alt: "Foto de Emilio Aguilera",
     height: "240px",
-    width: "240px",
+    width: "340px",
     className: "rounded mx-auto d-block"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Experiencia en desarrollo web"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "La experiencia que tengo de desarrollo web se limita al uso de HTML, CSS, JavaScript y PHP. ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "MySQL es lo \xFAnico que tengo de experiencia en cuanto a bases de datos.  ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "En frameworks a\xFAn no tengo experiencia, pero este semestre estar\xE9 trabajando con Laravel y React. ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "He usado unicamente Materialize como liber\xEDa."));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Experiencia en desarrollo web"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "La experiencia que tengo de desarrollo web se limita al uso de HTML, CSS, JavaScript y PHP. ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "MySQL es lo \xFAnico que tengo de experiencia en cuanto a bases de datos.  ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "En frameworks a\xFAn no tengo experiencia, pero este semestre estar\xE9 trabajando con Laravel y React. ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "He usado unicamente Materialize como lirer\xEDa."));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Ivan);

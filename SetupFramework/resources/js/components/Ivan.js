@@ -5,7 +5,7 @@ function Ivan() {
         <div className="shadow p-3 mb-5 bg-white rounded" style={{marginTop: 40}}>
             <h1 className="text-center">Iván Alejandro Díaz Peralta</h1>
             <h2 className="text-center">A01700486</h2>
-            <img src='storage/ems.jpg' alt="Foto de Emilio Aguilera" height="240px" width="240px" className="rounded mx-auto d-block" />
+            <img src='storage/ivan.jpg' alt="Foto de Emilio Aguilera" height="240px" width="340px" className="rounded mx-auto d-block" />
             <hr/>
             <h2>Experiencia en desarrollo web</h2>
             <p>
