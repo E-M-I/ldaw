@@ -5,7 +5,7 @@ function Links() {
         <div className="links">
             <a href="mau">Mau</a>
             <a href="ems">Emilio</a>
-            <a href="https://laravel-news.com">Ivan</a>
+            <a href="ivan">Ivan</a>
         </div>
     )
 }

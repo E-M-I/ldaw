@@ -65893,6 +65893,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Main__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Main */ "./resources/js/components/Main.js");
 /* harmony import */ var _Mau__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Mau */ "./resources/js/components/Mau.js");
 /* harmony import */ var _Ems__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Ems */ "./resources/js/components/Ems.js");
+/* harmony import */ var _Ivan__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Ivan */ "./resources/js/components/Ivan.js");
+
 
 
 
@@ -65910,6 +65912,46 @@ if (window.location.pathname === '/mau' && document.getElementById('profile')) {
 if (window.location.pathname === '/ems' && document.getElementById('profile')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Ems__WEBPACK_IMPORTED_MODULE_4__["default"], null), document.getElementById('profile'));
 }
+
+if (window.location.pathname === '/ivan' && document.getElementById('profile')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Ivan__WEBPACK_IMPORTED_MODULE_5__["default"], null), document.getElementById('profile'));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Ivan.js":
+/*!*****************************************!*\
+  !*** ./resources/js/components/Ivan.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function Ivan() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "shadow p-3 mb-5 bg-white rounded",
+    style: {
+      marginTop: 40
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    className: "text-center"
+  }, "Iv\xE1n Alejandro D\xEDaz Peralta"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "text-center"
+  }, "A01700486"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "storage/ems.jpg",
+    alt: "Foto de Emilio Aguilera",
+    height: "240px",
+    width: "240px",
+    className: "rounded mx-auto d-block"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Experiencia en desarrollo web"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "La experiencia que tengo de desarrollo web se limita al uso de HTML, CSS, JavaScript y PHP. ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "MySQL es lo \xFAnico que tengo de experiencia en cuanto a bases de datos.  ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "En frameworks a\xFAn no tengo experiencia, pero este semestre estar\xE9 trabajando con Laravel y React. ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "He usado unicamente Materialize como liber\xEDa."));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Ivan);
 
 /***/ }),
 
@@ -65934,7 +65976,7 @@ function Links() {
   }, "Mau"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "ems"
   }, "Emilio"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "https://laravel-news.com"
+    href: "ivan"
   }, "Ivan"));
 }
 
@@ -66042,8 +66084,8 @@ function Titulo() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Ems\Desktop\BLOQUE\ldaw\SetupFramework\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Ems\Desktop\BLOQUE\ldaw\SetupFramework\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\A01700486\htdocs\ldaw\SetupFramework\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\A01700486\htdocs\ldaw\SetupFramework\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
