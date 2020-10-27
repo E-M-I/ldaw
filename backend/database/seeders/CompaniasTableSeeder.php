@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB; 
+use Illuminate\Support\Facades\DB;
 
-class CompañiasTableSeeder extends Seeder
+class CompaniasTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
