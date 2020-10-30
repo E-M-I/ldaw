@@ -17,8 +17,6 @@ class CrearTablaTitulos extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('urlFoto');
-            $table->unsignedBigInteger('idUsuario');
-            $table->foreign('idUsuario')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('idGenero');
             $table->foreign('idGenero')->references('id')->on('generos')->onDelete('cascade');
             $table->unsignedBigInteger('idCompania');

@@ -20,6 +20,8 @@ class CrearTablaJuegos extends Migration
             $table->foreign('idTitulo')->references('id')->on('titulos')->onDelete('cascade');
             $table->unsignedBigInteger('idConsolas');
             $table->foreign('idConsolas')->references('id')->on('consolas')->onDelete('cascade');
+            $table->unsignedBigInteger('idUsuario');
+            $table->foreign('idUsuario')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

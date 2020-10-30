@@ -44,7 +44,10 @@ class UsuarioJuegoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*
+        1. MANDAS LLAMAR FUNCION DE CONTROLADOR JuegoController -> registra datos del juego
+        2. HACER NUEVO QUERY PARA METER LOS DATOS DEL JUEGO + SUS IDS
+        */
     }
 
     /**
