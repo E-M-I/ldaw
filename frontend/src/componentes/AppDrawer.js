@@ -209,21 +209,21 @@ const AppDrawer = (props) => {
                 }}
             >
                 <div className={classes.toolbar}>
-					<IconButton onClick={handleDrawerClose}>
-						{theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-					</IconButton>
+                  <IconButton onClick={handleDrawerClose}>
+                    {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                  </IconButton>
                 </div>
                 <Divider />
                 <List>
-                {itemsList.map((item, index) => {
-                    const { text, icon, onClick } = item;
-                    return (
-                        <ListItem button key={text} onClick={onClick}>
-                        <ListItemIcon>{icon}</ListItemIcon>
-                        <ListItemText primary={text} />
-                        </ListItem>
-                    );
-                })}
+                  {itemsList.map((item, index) => {
+                      const { text, icon, onClick } = item;
+                      return (
+                          <ListItem button key={text} onClick={onClick}>
+                            <ListItemIcon>{icon}</ListItemIcon>
+                            <ListItemText primary={text} />
+                          </ListItem>
+                      );
+                  })}
                 </List>
             </Drawer>
         </div>
