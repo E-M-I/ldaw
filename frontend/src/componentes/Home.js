@@ -11,13 +11,13 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(5),
         padding: theme.spacing(3)
     },
-}));
-export default function RegistrarTitulo() {
+  }));
+export default function Home() {
     const classes = useStyles();
     return (
         <Container className={classes.container}>
             <Paper className={classes.pageContent}>
-                <h1>Registrar Título</h1>
+                <h1>Home</h1>
             </Paper>
         </Container>
     )

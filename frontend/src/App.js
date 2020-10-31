@@ -1,22 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import RegistrarTitulo from "../src/componentes/RegistrarTitulo";
+import { makeStyles } from "@material-ui/styles";
+import AppDrawer from './componentes/AppDrawer';
+import Home from './componentes/Home';
+
+const useStyles = makeStyles({
+  container: {
+    display: 'flex'
+  }
+});
 
 function App() {
-  return (
-    <BrowserRouter>
-        <div>
-          <Switch>
-            <Route
-              path="/register/title"
-              component={RegistrarTitulo} />
-          </Switch>
-        </div>
-      </BrowserRouter>
-  );
+	const classes = useStyles();
+	return (
+		
+			
+				<BrowserRouter>
+				<AppDrawer />
+				<Switch>
+					<Route path="/" exact="true" component={Home} />
+					<Route path="/register/title" component={RegistrarTitulo} />
+				</Switch>
+			</BrowserRouter>
+		
+	);
 }
 
 export default App;
