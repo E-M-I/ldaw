@@ -25,7 +25,6 @@ function App() {
 				<Route path="/register/title" component={RegistrarTitulo} />
 			</Switch>
 		</BrowserRouter>
-		
 	);
 }
 
