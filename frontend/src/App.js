@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import RegistrarTitulo from "../src/componentes/RegistrarTitulo";
+import RegistrarIntereses from "../src/componentes/RegistrarIntereses";
 
 function App() {
   return (
@@ -13,6 +14,9 @@ function App() {
             <Route
               path="/register/title"
               component={RegistrarTitulo} />
+            <Route
+              path="/register/interest"
+              component={RegistrarIntereses} />
           </Switch>
         </div>
       </BrowserRouter>

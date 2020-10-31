@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\UsuarioTitulo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UsuarioTituloController extends Controller
 {
@@ -13,7 +14,20 @@ class UsuarioTituloController extends Controller
      */
     public function index()
     {
-        //
+        $datos = DB::table('usuarios_titulos')
+                    ->join('titulos', 'usuarios_titulos.idTitulo', '=', 'titulos.id')
+                    ->join('companias', 'titulos.idCompania', '=', 'companias.id')
+                    ->join('generos', 'titulos.idGenero', '=', 'generos.id')
+                    ->select('titulos.nombre as NT', 'generos.nombre as NG', 'companias.nombre as NC')
+                    ->get();
+        $respuesta = '<thead> <tr> <th>Titulo</th><th >Genero</th><th >Compañia</th> </tr></thead><tbody>';
+        foreach ($datos as $res){
+            $respuesta .= '<tr> <td align="center">'. $res->NT. '</td>';
+            $respuesta .= '<td align="center">'.$res->NG.'</td>';
+            $respuesta .= '<td align="center">'.$res->NC.'</td> </tr> ';
+             }
+        $respuesta .= '</tbody>';
+        return $respuesta;
     }
 
     /**
@@ -34,7 +48,18 @@ class UsuarioTituloController extends Controller
      */
     public function store(Request $request)
     {
-        //
+          //Instanciamos la clase Usuario titulo
+          $interes = new UsuarioTitulo;
+          //Declaramos los datos con los enviado en el request
+          $interes->idTitulo = $request->idTitulo;
+          $interes->idUsuario = $request->idUsuario;
+          //Guardamos el cambio en nuestro modelo
+          if ($interes->save()){
+              return 1;
+          }
+          else{
+              return -1;
+          }
     }
 
     /**

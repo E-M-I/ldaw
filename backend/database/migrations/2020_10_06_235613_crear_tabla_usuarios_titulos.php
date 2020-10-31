@@ -17,8 +17,8 @@ class CrearTablaUsuariosTitulos extends Migration
             $table->id();
             $table->unsignedBigInteger('idUsuario');
             $table->foreign('idUsuario')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('idTitulo');
-            $table->foreign('idTitulo')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('idTitulo')->unique();
+            $table->foreign('idTitulo')->references('id')->on('titulos')->onDelete('cascade');
             $table->timestamps();
         });
     }
