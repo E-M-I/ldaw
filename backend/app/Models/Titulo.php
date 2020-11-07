@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Titulo extends Model
 {
-    use HasFactory;
+    protected $table = 'titulos';
+    protected $fillable = ['nombre', 'urlFoto', 'idGenero', 'idCompania'];
 }

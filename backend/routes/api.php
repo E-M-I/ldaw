@@ -35,3 +35,4 @@ Route::resources([
 Route::get('coincidencias', 'App\Http\Controllers\UsuarioJuegoController@indexCoincidencias')->name('coincidencias');
 Route::get('ofertas/realizadas/{realizadas}', 'App\Http\Controllers\OfertaController@indexRealizadas')->name('realizadas');
 Route::get('ofertas/recibidas/{recibidas}', 'App\Http\Controllers\OfertaController@indexRecibidas')->name('recibidas');
+Route::get('intereses/personal/{id}', 'App\Http\Controllers\UsuarioTituloController@getIntereses')->name('intereses');

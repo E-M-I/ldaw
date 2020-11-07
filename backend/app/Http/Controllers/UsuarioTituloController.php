@@ -14,11 +14,16 @@ class UsuarioTituloController extends Controller
      */
     public function index()
     {
+        
+    }
+
+    public function getIntereses($id){
         $datos = DB::table('usuarios_titulos')
                     ->join('titulos', 'usuarios_titulos.idTitulo', '=', 'titulos.id')
                     ->join('companias', 'titulos.idCompania', '=', 'companias.id')
                     ->join('generos', 'titulos.idGenero', '=', 'generos.id')
                     ->select('titulos.nombre as NT', 'generos.nombre as NG', 'companias.nombre as NC')
+                    ->where('usuarios_titulos.idUsuario',$id)
                     ->get();
         $respuesta = '<thead> <tr> <th>Titulo</th><th >Genero</th><th >Compañia</th> </tr></thead><tbody>';
         foreach ($datos as $res){
@@ -29,7 +34,6 @@ class UsuarioTituloController extends Controller
         $respuesta .= '</tbody>';
         return $respuesta;
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -61,6 +65,8 @@ class UsuarioTituloController extends Controller
               return -1;
           }
     }
+
+    
 
     /**
      * Display the specified resource.

@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Titulo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TituloController extends Controller
 {
@@ -13,7 +14,7 @@ class TituloController extends Controller
      */
     public function index()
     {
-        //
+        return Titulo::get();
     }
 
     /**
