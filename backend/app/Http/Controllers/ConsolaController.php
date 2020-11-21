@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Titulo;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class TituloController extends Controller
+class ConsolaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class TituloController extends Controller
      */
     public function index()
     {
-        return DB::table('titulos')
+        return DB::table('consolas')
             ->get();
     }
 

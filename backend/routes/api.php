@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\OfertaController;
 use App\Http\Controllers\TituloController;
+use App\Http\Controllers\ConsolaController;
 use App\Http\Controllers\UsuarioTituloController;
 use App\Http\Controllers\UsuarioJuegoController;
 use App\Http\Controllers\UserController;
@@ -29,6 +30,7 @@ Route::resources([
     'titulos' => TituloController::class,
     'intereses' => UsuarioTituloController::class,
     'juegos' => UsuarioJuegoController::class,
+    'consolas' => ConsolaController::class,
     'users' => UserController::class
 ]);
 
