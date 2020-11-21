@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import RegistrarTitulo from "../src/componentes/RegistrarTitulo";
 import RegistrarIntereses from "../src/componentes/RegistrarIntereses";
+import misInteresesView from "../src/componentes/MisInteresesView";
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
             <Route
               path="/register/title"
               component={RegistrarTitulo} />
+            <Route
+              path="/misIntereses"
+              component={misInteresesView} />
             <Route
               path="/register/interest"
               component={RegistrarIntereses} />

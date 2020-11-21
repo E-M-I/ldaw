@@ -34,6 +34,21 @@ class UsuarioTituloController extends Controller
         $respuesta .= '</tbody>';
         return $respuesta;
     }
+
+
+    public function getInteresesInterfaz($id){
+        $datos = DB::table('usuarios_titulos')
+        ->join('juegos', 'usuarios_titulos.idTitulo', '=', 'juegos.idTitulo')
+        ->join('consolas','consolas.id','=','juegos.idConsolas')
+        ->join('users','juegos.idUsuario','=','users.id')
+        ->where([['usuarios_titulos.idUsuario',$id],['juegos.idUsuario', '!=', $id]])
+        ->select('juegos.id', 'juegos.nombre as nombreJ','consolas.nombre as nombreC','juegos.idUsuario as owner','username')
+        ->orderBy('nombreJ', 'asc')
+        ->get();
+        return $datos;
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
