@@ -4,6 +4,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Card from '@material-ui/core/Card';
 import {CardContent, Container, Grid, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper }from '@material-ui/core';
 import axios from 'axios';
+import AppDrawer from './AppDrawer';
 import Swal from 'sweetalert2';
 
 const useStyles = makeStyles((theme) => ({
@@ -95,6 +96,8 @@ export default function RegistrarIntereses() {
 
   return (
     <div>
+      <AppDrawer />
+      <br/>
     <Container maxWidth="md">
         <h2 align="center">Títulos de interés</h2>
      <Card style={{ backgroundColor: '#7c7595'}}> 

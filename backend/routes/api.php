@@ -39,3 +39,4 @@ Route::get('ofertas/realizadas/{realizadas}', 'App\Http\Controllers\OfertaContro
 Route::get('ofertas/recibidas/{recibidas}', 'App\Http\Controllers\OfertaController@indexRecibidas')->name('recibidas');
 Route::get('intereses/personal/{id}', 'App\Http\Controllers\UsuarioTituloController@getIntereses')->name('intereses');
 Route::get('intereses/misIntereses/{id}','App\Http\Controllers\UsuarioTituloController@getInteresesInterfaz')->name('interesesView');
+Route::get('juegos/oferta/{id}','App\Http\Controllers\OfertaController@getInfoJuegos')->name('juegosOferta');

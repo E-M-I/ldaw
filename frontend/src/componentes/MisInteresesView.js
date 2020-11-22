@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {Card,CardContent, Container, Grid, Paper,Button, Table, TableBody }from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
+import LinkOfertas from '../componentes/LinkOfertas';
+import AppDrawer from './AppDrawer';
 //API calls
 import axios from 'axios';
 
@@ -37,9 +39,13 @@ export default class MisInteresesView extends React.Component{
     render(){
         return(
             <div >
+                <AppDrawer />
+                <br/>
+                <br/>
+                <br/>
                 <Container maxWidth="md">
                     <h2 align="center">Mis Intereses</h2>
-                    <Card style={{ backgroundColor: '#7c7595'}}>
+                    <Card style={{ backgroundColor: '#38405F'}}>
                         <CardContent align="center" >
                             <Grid container spacing={3}>
                                 {this.state.intereses.map((info)=>(
@@ -50,9 +56,7 @@ export default class MisInteresesView extends React.Component{
                                             <h2> {info.nombreJ} </h2>
                                             <h4>Consola: {info.nombreC}</h4>
                                             <h4>Dueño: {info.username}</h4>
-                                            <a href="http://localhost:3000/register/interest">
-                                                <h4>Hacer oferta</h4>
-                                            </a>
+                                            <LinkOfertas owner={info.owner} juegoId={info.id} consola={info.nombreC} nombreJ={info.nombreJ}/>
                                         </Paper>                                    
                                 </Grid>
                                 ))}
