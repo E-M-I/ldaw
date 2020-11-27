@@ -1,12 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
 import Card from '@material-ui/core/Card';
 import {CardContent, Container, Grid, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper }from '@material-ui/core';
 import axios from 'axios';
+import AppDrawer from './AppDrawer';
 import Swal from 'sweetalert2';
 
 const useStyles = makeStyles((theme) => ({
@@ -22,8 +20,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+function crearSelect(){
+  var sel='<option value="0"><None</option>';
+  const num=1;
+  axios.get("http://localhost:8000/api/titulos")
+    .then(function (resp){
+      console.log(resp.data);
+      //Ciclo for para obtener cada uno de los elementos
+      resp.data.forEach(element => {
+       sel = sel.concat('<option value="' + element.id + '"> ' + element.nombre + '</option> ');
+      });
+      //insertar el select en el html
+     document.getElementById("demo-simple-select-outlined").innerHTML = sel;
+    } );
+}
+
 function tabla (){
-    axios.get("http://localhost:8000/api/intereses")
+  var id=1;
+    axios.get("http://localhost:8000/api/intereses/personal/"+id)
           .then(function (resp){
             document.getElementById('tablaIntereses').innerHTML = resp.data;
           } );
@@ -31,6 +45,7 @@ function tabla (){
 
 export default function RegistrarIntereses() {
   const classes = useStyles();
+  crearSelect()
   tabla();
   const [age,] = React.useState('');
 
@@ -41,12 +56,12 @@ export default function RegistrarIntereses() {
 
 
   const guardarDatos = (event) => {
-      var x = 1;
-      var y = document.getElementById('demo-simple-select-outlined').value;
-    if(y > 0){
+      var usuarioId = 1;
+      var idT = document.getElementById('demo-simple-select-outlined').value;
+    if(idT > 0){
         const interes = {
-        idTitulo: y,
-        idUsuario: x,
+        idTitulo: idT,
+        idUsuario: usuarioId,
         };
         axios.post("http://localhost:8000/api/intereses", interes)
           .then(function (resp){
@@ -81,26 +96,19 @@ export default function RegistrarIntereses() {
 
   return (
     <div>
+      <AppDrawer />
+      <br/>
     <Container maxWidth="md">
         <h2 align="center">Títulos de interés</h2>
      <Card style={{ backgroundColor: '#7c7595'}}> 
      <h2 align="center">Registra Un Nuevo Título De Tu Interés</h2>
       <CardContent align="center">
       <FormControl variant="outlined" className={classes.formControl}>
-        <InputLabel id="demo-simple-select-outlined-label">Título</InputLabel>
-        <Select
-          labelId="demo-simple-select-outlined-label"
-          id="demo-simple-select-outlined"
-          onChange={handleChange}
-          label="Age"
-        >
-          <MenuItem value={0}>
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={1}>Mario Kart</MenuItem>
-          <MenuItem value={2}>God of War</MenuItem>
-          <MenuItem value={3}>FIFA</MenuItem>
-        </Select>
+        <h3>Título</h3>
+        <select labelId="demo-simple-select-outlined-label" id="demo-simple-select-outlined" onChange={handleChange} label="Age">
+        </select>
+
+
         <br/>
         <Button variant="contained" color="primary" align="center" onClick={guardarDatos}>
             Registrar Interés

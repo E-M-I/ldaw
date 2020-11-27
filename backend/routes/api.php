@@ -37,3 +37,7 @@ Route::resources([
 Route::get('coincidencias', 'App\Http\Controllers\UsuarioJuegoController@indexCoincidencias')->name('coincidencias');
 Route::get('ofertas/realizadas/{realizadas}', 'App\Http\Controllers\OfertaController@indexRealizadas')->name('realizadas');
 Route::get('ofertas/recibidas/{recibidas}', 'App\Http\Controllers\OfertaController@indexRecibidas')->name('recibidas');
+Route::get('intereses/personal/{id}', 'App\Http\Controllers\UsuarioTituloController@getIntereses')->name('intereses');
+Route::get('intereses/misIntereses/{id}','App\Http\Controllers\UsuarioTituloController@getInteresesInterfaz')->name('interesesView');
+Route::get('juegos/oferta/{id}','App\Http\Controllers\OfertaController@getInfoJuegos')->name('juegosOferta');
+Route::get('juegos/oferta/ofertasRec/{id}','App\Http\Controllers\OfertaController@getOfertasRec')->name('ofertasRec');
