@@ -102,8 +102,16 @@ class OfertaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {   
+        $est;
+        $oferta = Oferta::find($id);
+        if($request->estado == "Aceptar"){
+            $est = "aceptado";
+        }else{
+            $est = "rechazado";
+        }
+        $oferta->estado = $est;
+        $oferta->update();
     }
 
     /**
@@ -133,7 +141,7 @@ class OfertaController extends Controller
         ->join('juegos','ofertas.idJuegoPublicado','=','juegos.id')
         ->join('juegos as juegos1','ofertas.idJuegoOfertado','=','juegos1.id')
         ->join('consolas','consolas.id','=','juegos1.idConsolas')
-        ->where('ofertas.idUsuarioPublicado', $id)
+        ->where([['ofertas.idUsuarioPublicado', $id],['estado','pendiente']])
         ->select('ofertas.id', 'users1.username as UsuarioOf', 'juegos.nombre as JuegoPub', 'juegos1.nombre as JuegoOf', 'consolas.nombre as CJO')
         ->get();
         return $datos;

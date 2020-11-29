@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Card, CardContent, Container, Grid, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper }from '@material-ui/core';
 import axios from 'axios';
 import AppDrawer from './AppDrawer';
+import BotonAccionesOferta from '../componentes/BotónAccionesOferta';
 
 
 export default class OfertasRec extends React.Component{
@@ -63,14 +64,13 @@ export default class OfertasRec extends React.Component{
                                     <TableCell align="center">{info.CJO}</TableCell>
                                     <TableCell align="center"> {info.UsuarioOf}</TableCell>
                                     <TableCell align="center">
-                                        <Button variant="contained" size="small" color="primary">
-                                            Aceptar
-                                        </Button>
+                                    
+                                    
+                                        <BotonAccionesOferta id={info.id} oJuego={info.JuegoOf} tJuego={info.JuegoPub} status="Aceptar" color="primary"/>
                                         <br/>
                                         <br/>
-                                        <Button variant="contained" size="small" color="secondary">
-                                            Rechazar
-                                        </Button>
+                                        <BotonAccionesOferta id={info.id} oJuego={info.JuegoOf} tJuego={info.JuegoPub} status="Rechazar" color="secondary"/>
+                                    
                                     </TableCell>
                                   </TableRow>
                                 ))}

@@ -2,3 +2,6 @@
 [1116/120727.706:ERROR:directory_reader_win.cc(43)] FindFirstFile: El sistema no puede encontrar la ruta especificada. (0x3)
 [1121/171204.417:ERROR:directory_reader_win.cc(43)] FindFirstFile: El sistema no puede encontrar la ruta especificada. (0x3)
 [1121/203926.820:ERROR:directory_reader_win.cc(43)] FindFirstFile: El sistema no puede encontrar la ruta especificada. (0x3)
+[1128/233724.231:ERROR:directory_reader_win.cc(43)] FindFirstFile: El sistema no puede encontrar la ruta especificada. (0x3)
+[1128/233724.265:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\peral\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\5c282860-f96b-4eed-8ade-7d70fdad6d3d: El sistema no puede encontrar la ruta especificada. (0x3)
+[1128/233724.271:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\peral\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\ee6fda33-e08a-4122-a4a6-bf59cff08924: El sistema no puede encontrar la ruta especificada. (0x3)

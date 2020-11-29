@@ -10,6 +10,7 @@ import misInteresesView from "../src/componentes/MisInteresesView";
 import RegistrarIntereses from "../src/componentes/RegistrarIntereses";
 import RealizarOferta from "../src/componentes/RealizarOferta";
 import OfertasRec from "../src/componentes/OfertasRec";
+import AccionesOferta from "../src/componentes/AccionesOferta";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
 				<Route path="/register/interest" component={RegistrarIntereses} />
 				<Route path="/realizarOferta/:owner/:juegoId/:consola/:nombreJ" component={RealizarOferta} />
 				<Route path="/offers/recieved" component={OfertasRec} />
+				<Route path="/offers/actions/:id/:status/:tJuego/:oJuego" component={AccionesOferta} />
 			</Switch>
 		</BrowserRouter>
 	);
