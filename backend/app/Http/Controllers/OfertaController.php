@@ -172,4 +172,18 @@ class OfertaController extends Controller
         ->get();
         return $datos;
     }
+
+    public function getOfertasRea($id){
+        $datos = DB::table('ofertas')
+        ->join('users','ofertas.idUsuarioPublicado','=','users.id')
+        ->join('users as users1','ofertas.idUsuarioOfertado','=','users1.id')
+        ->join('juegos','ofertas.idJuegoPublicado','=','juegos.id')
+        ->join('juegos as juegos1','ofertas.idJuegoOfertado','=','juegos1.id')
+        ->join('consolas','consolas.id','=','juegos1.idConsolas')
+        ->where('ofertas.idUsuarioOfertado', $id)
+        ->select('ofertas.id','ofertas.estado', 'users.username as UsuarioPub', 'juegos.nombre as JuegoPub', 'juegos1.nombre as JuegoOf', 'consolas.nombre as CJO', 'ofertas.idJuegoPublicado', 'ofertas.idJuegoOfertado' )
+        ->orderBy('ofertas.id')
+        ->get();
+        return $datos;
+    }
 }
