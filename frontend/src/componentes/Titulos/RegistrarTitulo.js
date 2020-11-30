@@ -25,7 +25,8 @@ const useStyles = makeStyles((theme) => ({
 function RegistrarTitulo(props) {
     const classes = useStyles();
     return (
-        <div className={classes.container}>
+        <div className={classes.container} >
+            
             <CssBaseline />
             <AppDrawer />
             <Container >

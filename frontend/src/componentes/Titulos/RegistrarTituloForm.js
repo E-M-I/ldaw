@@ -88,11 +88,11 @@ function RegistrarTituloForm() {
 
     return (
         <div>
-            <TextField id="nombre-titulo" label="Nombre del título" value={nombre} onChange={handleNombre}/><br/>
+            <TextField id="nombre-titulo" label="Nombre del título" value={nombre} onChange={handleNombre} /><br/>
             {/*
                 SELECT DE GÉNEROS
             */}
-            <FormControl className={classes.formControl}>
+            <FormControl className={classes.formControl} >
                 <InputLabel htmlFor="grouped-select">Géneros</InputLabel>
                 <Select defaultValue="" id="select-generos" onChange={handleGenero} name="select-generos">
                 {
