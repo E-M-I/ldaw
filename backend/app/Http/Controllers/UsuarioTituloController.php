@@ -48,6 +48,15 @@ class UsuarioTituloController extends Controller
         return $datos;
     }
 
+    public function getCompanias() {
+        return DB::table('companias')
+            ->get();
+    }
+
+    public function getGeneros() {
+        return DB::table('generos')
+            ->get();
+    }
 
     /**
      * Show the form for creating a new resource.

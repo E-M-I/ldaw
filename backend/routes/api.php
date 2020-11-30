@@ -39,5 +39,7 @@ Route::get('ofertas/realizadas/{realizadas}', 'App\Http\Controllers\OfertaContro
 Route::get('ofertas/recibidas/{recibidas}', 'App\Http\Controllers\OfertaController@indexRecibidas')->name('recibidas');
 Route::get('intereses/personal/{id}', 'App\Http\Controllers\UsuarioTituloController@getIntereses')->name('intereses');
 Route::get('intereses/misIntereses/{id}','App\Http\Controllers\UsuarioTituloController@getInteresesInterfaz')->name('interesesView');
+Route::get('companias','App\Http\Controllers\UsuarioTituloController@getCompanias')->name('companias');
+Route::get('generos','App\Http\Controllers\UsuarioTituloController@getGeneros')->name('generos');
 Route::get('juegos/oferta/{id}','App\Http\Controllers\OfertaController@getInfoJuegos')->name('juegosOferta');
 Route::get('juegos/oferta/ofertasRec/{id}','App\Http\Controllers\OfertaController@getOfertasRec')->name('ofertasRec');

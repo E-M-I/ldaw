@@ -36,7 +36,19 @@ class TituloController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Instanciamos la clase Titulo
+        $titulo = new Titulo;
+        //Declaramos los datos con los enviado en el request
+        $titulo->nombre = $request->nombre;
+        $titulo->idGenero = $request->idGenero;
+        $titulo->idCompania = $request->idCompania;
+        //Guardamos el cambio en nuestro modelo
+        if ($titulo->save()){
+            return 1;
+        }
+        else{
+            return -1;
+        }
     }
 
     /**

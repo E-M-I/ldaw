@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Titulo extends Model
 {
     protected $table = 'titulos';
-    protected $fillable = ['nombre', 'urlFoto', 'idGenero', 'idCompania'];
+    protected $fillable = ['nombre', 'idGenero', 'idCompania'];
+    public $timestamps = false;
 }
