@@ -11,6 +11,8 @@ const AccionesOferta = props =>{
     const {status} = props.match.params;
     const {tJuego} = props.match.params;
     const {oJuego} = props.match.params;
+    const {idJO} = props.match.params;
+    const {idJP} = props.match.params;
 
 
     return(
@@ -45,7 +47,7 @@ const AccionesOferta = props =>{
                         <br/>
                         <br/>
                         <div style={{textAlign: 'center'}}>
-                            <Button variant="contained" color="primary" onClick={()=>saveAction(id,status)}>{status} Juego</Button>
+                            <Button variant="contained" color="primary" onClick={()=>saveAction(id,status,idJO,idJP)}>{status} Juego</Button>
                         </div>
                     </CardContent>
                 </Card>
@@ -54,9 +56,11 @@ const AccionesOferta = props =>{
     )
 }
 
-function saveAction ($id,$status){
+function saveAction ($id,$status,$idJO,$idJp){
     const values = {
         estado: $status,
+        jp: $idJp,
+        jo: $idJO
     }
     axios.put('http://127.0.0.1:8000/api/ofertas/'+$id, values)
         .then(res => {

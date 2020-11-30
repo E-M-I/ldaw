@@ -7,7 +7,9 @@ class BotonAccionesOferta extends Component{
     tJuego = this.props.tJuego;
     status = this.props.status;
     color = this.props.color;
-    dir = "http://localhost:3000/offers/actions/"+this.id+"/"+this.status+"/"+this.tJuego+"/"+this.oJuego;
+    idJO = this.props.idJO;
+    idJP = this.props.idJP;
+    dir = "http://localhost:3000/offers/actions/"+this.id+"/"+this.status+"/"+this.tJuego+"/"+this.oJuego+'/'+this.idJO+'/'+this.idJP;
     render(){
         return(
             <div>

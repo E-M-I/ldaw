@@ -24,7 +24,7 @@ function App() {
 				<Route path="/register/interest" component={RegistrarIntereses} />
 				<Route path="/realizarOferta/:owner/:juegoId/:consola/:nombreJ" component={RealizarOferta} />
 				<Route path="/offers/recieved" component={OfertasRec} />
-				<Route path="/offers/actions/:id/:status/:tJuego/:oJuego" component={AccionesOferta} />
+				<Route path="/offers/actions/:id/:status/:tJuego/:oJuego/:idJO/:idJP" component={AccionesOferta} />
 			</Switch>
 		</BrowserRouter>
 	);

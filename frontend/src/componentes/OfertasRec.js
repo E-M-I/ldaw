@@ -66,10 +66,10 @@ export default class OfertasRec extends React.Component{
                                     <TableCell align="center">
                                     
                                     
-                                        <BotonAccionesOferta id={info.id} oJuego={info.JuegoOf} tJuego={info.JuegoPub} status="Aceptar" color="primary"/>
+                                        <BotonAccionesOferta id={info.id} oJuego={info.JuegoOf} tJuego={info.JuegoPub} idJO={info.idJuegoPublicado} idJP={info.idJuegoOfertado} status="Aceptar" color="primary"/>
                                         <br/>
                                         <br/>
-                                        <BotonAccionesOferta id={info.id} oJuego={info.JuegoOf} tJuego={info.JuegoPub} status="Rechazar" color="secondary"/>
+                                        <BotonAccionesOferta id={info.id} oJuego={info.JuegoOf} tJuego={info.JuegoPub} idJO={info.idJuegoPublicado} idJP={info.idJuegoOfertado} status="Rechazar" color="secondary"/>
                                     
                                     </TableCell>
                                   </TableRow>

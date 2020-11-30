@@ -106,12 +106,38 @@ class OfertaController extends Controller
         $est;
         $oferta = Oferta::find($id);
         if($request->estado == "Aceptar"){
-            $est = "aceptado";
+            DB::beginTransaction();
+            try{
+                $est = "aceptado";
+                $oferta->estado = $est;
+                if($oferta->update()){
+                    $cambios = DB::table('ofertas')
+                                ->where('idJuegoPublicado', $request->jp)
+                                ->orWhere('idJuegoPublicado', $request->jo)
+                                ->orWhere('idJuegoOfertado', $request->jo)
+                                ->orWhere('idJuegoOfertado', $request->jp)
+                                ->get();
+                    foreach($cambios as $cambio){
+                        if($cambio->estado == "pendiente"){
+                            $of = Oferta::find($cambio->id);
+                            $of->estado = "rechazado";
+                            $of->update();
+                        }
+                    }
+                    DB::commit();
+                    return $cambios;
+                }
+            }catch(QueryException $ex){
+                DB::rollback();
+                return 0;
+            }
+            
         }else{
             $est = "rechazado";
+            $oferta->estado = $est;
+            $oferta->update();
         }
-        $oferta->estado = $est;
-        $oferta->update();
+        
     }
 
     /**
@@ -142,7 +168,7 @@ class OfertaController extends Controller
         ->join('juegos as juegos1','ofertas.idJuegoOfertado','=','juegos1.id')
         ->join('consolas','consolas.id','=','juegos1.idConsolas')
         ->where([['ofertas.idUsuarioPublicado', $id],['estado','pendiente']])
-        ->select('ofertas.id', 'users1.username as UsuarioOf', 'juegos.nombre as JuegoPub', 'juegos1.nombre as JuegoOf', 'consolas.nombre as CJO')
+        ->select('ofertas.id', 'users1.username as UsuarioOf', 'juegos.nombre as JuegoPub', 'juegos1.nombre as JuegoOf', 'consolas.nombre as CJO', 'ofertas.idJuegoPublicado', 'ofertas.idJuegoOfertado' )
         ->get();
         return $datos;
     }
