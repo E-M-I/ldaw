@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/styles";
 import AppDrawer from './componentes/AppDrawer';
 import Home from './componentes/Home';
 import RegistrarJuego from './componentes/Juegos/RegistrarJuego';
-import RegistrarTitulo from "../src/componentes/RegistrarTitulo";
+import RegistrarTitulo from "../src/componentes/Titulos/RegistrarTitulo";
 import misInteresesView from "../src/componentes/MisInteresesView";
 import RegistrarIntereses from "../src/componentes/RegistrarIntereses";
 import RealizarOferta from "../src/componentes/RealizarOferta";
