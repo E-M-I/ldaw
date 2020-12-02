@@ -1,126 +1,77 @@
-/*import React, { Component } from 'react'
-import { Form, Button, Container, Col, Row } from 'react-bootstrap'
-import axios from 'axios';
-import { Link, Redirect } from "react-router-dom";
-import Swal from 'sweetalert2';
+import React,{useState, useEffect} from 'react'
+import {withRouter} from 'react-router-dom'
+import axios from 'axios'
+import swal from 'sweetalert2'
+import {makeStyles} from '@material-ui/core/styles'
+import { Button, Container, CssBaseline, Divider, Paper, TextField, Typography } from '@material-ui/core'
 
-
-export default class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: '',
-      password: '',
-    };
-    this.onChange = this.onChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+const useStyles = makeStyles((theme)=>({
+  container: {
+    display: 'flex',
+    marginTop: '60px'
+  },
+  pageContent: {
+    margin: theme.spacing(5),
+    padding: theme.spacing(3)
+  },
+  title: {
+    textAlign: 'center' 
+  },
+  divider: {
+    marginTop: '20px',
+    marginBottom: '20px'
+  },
+  button: {
+    textAlign: 'center',
+    marginTop: '15px'
   }
-  onChange = (e) => this.setState({ [e.target.name]: e.target.value });
+}))
+function Login(props) {
+  const history = props.history;
+  const [email,setEmail] = useState('');
+  const [password,setPassword] = useState('');
+  const classes = useStyles();
 
-  handleSubmit(event) {
-
-    console.log(this.state.email)
-    console.log(this.state.password)
-    localStorage.setItem('email', this.state.email);
-
-    event.preventDefault();
-    axios.post('http://localhost:8000/api/auth/login', {
-      email: this.state.email,
-      password: this.state.password,
-    }).then(function (res) {
-      console.log(res)
-      localStorage.setItem('token', res.data.token);
-      localStorage.setItem('auth', true);
-      window.location = "http://localhost:3000/registrado";
-    }).catch(function (err) {
-      console.log(err)
-      localStorage.setItem('auth', false);
-      Swal.fire(
-        'ERROR',
-        'Usuario y/o contraseña incorrecto',
-        'error'
-      )
-    })
-
-
-
-    event.preventDefault();
+  const handleEmail = (e)=>{
+    setEmail(e.target.value)
   }
 
-  render() {
+  const handlePassword = (e)=>{
+    setPassword(e.target.value)
+  }
 
-    return (
-      <div class="content">
-        <div class="container dflex">
-          <div class="row">
-            <div class="col-12" >
-              <br /><br />
+  const handleLogin = (e)=>{
+    const credentials = {
+      email: email, 
+      password: password
+    }
+    axios.post('http://localhost:8000/api/auth/login', credentials)
+      .then(response=>{
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('auth', true);
+        window.location ="http://localhost:3000/"
+      })
+      .catch(error=>{
+        console.log(error)
+      })
+  }
 
-              <div class="row justify-content-center">
-
-
-              </div>
-              <br />
-              <h1 className="title">GAMECH</h1>
-              <Form>
-                <div class="row justify-content-center">
-                  <div class="col-4" >
-                    <Form.Group controlId="formBasicEmail" style={{ width: '300px' }}>. <Form.Label>Correo:</Form.Label>
-                      <Form.Control type="text" placeholder="mariaSandoval@gmail.com" name="email" value={this.state.email} onChange={this.onChange} />
-                    </Form.Group>
-                  </div>
-                </div>
-                <div class="row justify-content-center">
-                  <div class="col-4" >
-                    <Form.Group controlId="formBasicPassword" style={{ width: '300px' }}>
-                      <Form.Label>Contraseña:</Form.Label>
-                      <Form.Control type="password" placeholder="" name="password" value={this.state.password} onChange={this.onChange} />
-                    </Form.Group>
-                  </div>
-                </div>
-                <div class="row justify-content-center">
-
-                  <div class="col-4" align="center">
-
-                    <Row>
-                      <Col><Link to="/">
-                        <Button >Regresar</Button>
-                      </Link> </Col>
-                      <Col>
-                        <Button variant="primary" type="submit" onClick={this.handleSubmit}>
-                          Iniciar Sesión
-                        </Button>
-                      </Col>
-                    </Row>
-                  </div>
-                </div>
-
-                <br />
-
-              </Form>
-            </div>
+  return (
+    <div className={classes.container}>
+      <CssBaseline/>
+      <Container>
+        <Paper className={classes.pageContent}>
+          <Typography variant='h4' className={classes.title}>Login</Typography>
+          <Divider className={classes.divider}/>
+          <TextField id='email' label='Correo Electrónico' value={email} onChange={handleEmail}/><br/>
+          <TextField id='password' label='Contraseña' value={password} onChange={handlePassword} type='password'/><br/>
+          <div className={classes.button}>
+            <Button variant='contained' color='primary' onClick={handleLogin} >Iniciar Sesión</Button>
           </div>
-        </div>
-      </div>
-    )
-  }
-}*/
-/*handleSubmit(event) {
-  event.preventDefault();
-  var pass = document.getElementById("password").value;
-  var correo = document.getElementById("email").value;
-  const usuario ={
-    email: correo,
-    password:pass
-  }
-  axios.post('http://localhost:8000/api/auth/login', usuario)
-  .then((response) => {
-    const token = response.data.token;
-   this.setState.isAuthenticated=true;
-   console.log(token);
-})
+        </Paper>
+      </Container>
+    </div>
+  )
+}
 
-  .catch((error) => {
-      console.log(error);
-  });
-}*/
+export default withRouter(Login)

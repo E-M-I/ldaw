@@ -17,13 +17,13 @@ function App() {
 	return (
 		<BrowserRouter>
 			<Switch>
-				<Route path="/" exact="true" component={Home} />
-				<Route path="/register/game" exact="true" component={RegistrarJuego} />
-				<Route path="/register/title" component={RegistrarTitulo} />
-        		<Route path="/misIntereses" component={misInteresesView} />
-				<Route path="/register/interest" component={RegistrarIntereses} />
-				<Route path="/realizarOferta/:owner/:juegoId/:consola/:nombreJ" component={RealizarOferta} />
-				<Route path="/offers/recieved" component={OfertasRec} />
+				<Route path="/" exact="true" component={localStorage.getItem('token') && localStorage.getItem('auth') ? Home : Login} />
+				<Route path="/register/game" exact="true" component={localStorage.getItem('token') && localStorage.getItem('auth') ? RegistrarJuego : Login} />
+				<Route path="/register/title" component={localStorage.getItem('token') && localStorage.getItem('auth') ? RegistrarTitulo : Login} />
+        		<Route path="/misIntereses" component={localStorage.getItem('token') && localStorage.getItem('auth') ? misInteresesView : Login} />
+				<Route path="/register/interest" component={localStorage.getItem('token') && localStorage.getItem('auth') ? RegistrarIntereses : Login} />
+				<Route path="/realizarOferta/:owner/:juegoId/:consola/:nombreJ" component={localStorage.getItem('token') && localStorage.getItem('auth') ? RealizarOferta : Login} />
+				<Route path="/offers/recieved" component={localStorage.getItem('token') && localStorage.getItem('auth') ? OfertasRec : Login} />
 				<Route path="/login" component={Login} />
         		<Route path="/register" component={Register} />
 			</Switch>
