@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Models\Juego;
-use App\Http\Models\UsuarioJuego;
-use App\Http\Resources\UsuarioJuegoCollection;
-use App\Http\Resources\UsuarioJuego as UsuarioJuegoResource;
+use App\Models\Juego;
+use App\Models\UsuarioJuego;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
 
 class UsuarioJuegoController extends Controller
 {
@@ -49,22 +49,37 @@ class UsuarioJuegoController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nombre' => 'required',
-            'idTitulo' => 'required',
-            'idConsolas' => 'required',
-            'idUsuario' => 'required'
-        ]);
-        
-        $juego = Juego::create($request->all());
-        return (new UsuarioJuegoResource($usuarioJuego))
-            ->response()
-            ->setStatusCode(201);
+        //Instanciar la clase Juego
+        $juego = new Juego;
 
-        /*
-        1. MANDAS LLAMAR FUNCION DE CONTROLADOR JuegoController -> registra datos del juego
-        2. HACER NUEVO QUERY PARA METER LOS DATOS DEL JUEGO + SUS IDS
-        */
+        //Obtener los datos del juego enviados desde el request
+        $juego->nombre = $request->nombre;
+        $juego->idTitulo = $request->idTitulo;
+        $juego->idConsolas = $request->idConsolas;
+        $juego->idUsuario = $request->idUsuario;
+
+        //guardar el juego en la base de datos
+        $juego->save();
+        
+
+        //obtener el id del juego recien creado
+        $idJuego = DB::table('juegos')
+            ->where('nombre', '=', $juego->nombre)->pluck('id');
+
+        $idJuego = $idJuego[0];
+
+        $usuarioJuego = new UsuarioJuego;
+
+        $usuarioJuego->idUsuario = $request->idUsuario;
+        $usuarioJuego->idJuego = $idJuego;
+        
+        if ($usuarioJuego->save()){
+            return 1;
+        }
+        else{
+            return -1;
+        }
+        
     }
 
     /**

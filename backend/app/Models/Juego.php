@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Juego extends Model
 {
-    use HasFactory;
+    protected $table = 'juegos';
+    protected $fillable = ['nombre', 'idTitulo', 'idConsolas', 'idUsuario'];
+    public $timestamps = false;
 }
