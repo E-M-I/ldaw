@@ -11,8 +11,10 @@ const useStyles = makeStyles((theme)=>({
     marginTop: '60px'
   },
   pageContent: {
-    margin: theme.spacing(5),
-    padding: theme.spacing(3)
+    padding: theme.spacing(3),
+    minWidth: '10px',
+    marginLeft: '10px',
+    overflow: 'hidden'
   },
   title: {
     textAlign: 'center' 
@@ -22,6 +24,7 @@ const useStyles = makeStyles((theme)=>({
     marginBottom: '20px'
   },
   button: {
+    marginRight: theme.spacing(2),
     textAlign: 'center',
     marginTop: '15px'
   }
@@ -56,17 +59,21 @@ function Login(props) {
       })
   }
 
+
   return (
     <div className={classes.container}>
       <CssBaseline/>
       <Container>
         <Paper className={classes.pageContent}>
-          <Typography variant='h4' className={classes.title}>Login</Typography>
+          <Typography variant='h4' className={classes.title}>Iniciar Sesión</Typography>
           <Divider className={classes.divider}/>
-          <TextField id='email' label='Correo Electrónico' value={email} onChange={handleEmail}/><br/>
-          <TextField id='password' label='Contraseña' value={password} onChange={handlePassword} type='password'/><br/>
+          <div style={{alignContent: 'center', textAlign: 'center'}}>
+            <TextField id='email' label='Correo Electrónico' value={email} onChange={handleEmail}/><br/>
+            <TextField id='password' label='Contraseña' value={password} onChange={handlePassword} type='password'/><br/>
+          </div>
           <div className={classes.button}>
-            <Button variant='contained' color='primary' onClick={handleLogin} >Iniciar Sesión</Button>
+            <Button variant='contained' color='primary' onClick={handleLogin} >Iniciar Sesión</Button><br/>
+            <Button  color='default' onClick={() => history.push('/register')} style={{marginTop: '10px'}}>¡Regístrate!</Button>
           </div>
         </Paper>
       </Container>
