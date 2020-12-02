@@ -2,6 +2,7 @@ import { Container, CssBaseline, Paper, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core'
 import React from 'react'
 import AppDrawer from './AppDrawer';
+import Logout from './Logout'
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -30,6 +31,7 @@ export default function Home() {
             <Container>
                 <Paper className={classes.pageContent}>
                     <Typography variant="h4" className={classes.title}>Home</Typography>
+                    <Logout />
                 </Paper>
             </Container>
         </div>
