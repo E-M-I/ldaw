@@ -9,6 +9,7 @@ use App\Http\Controllers\ConsolaController;
 use App\Http\Controllers\UsuarioTituloController;
 use App\Http\Controllers\UsuarioJuegoController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,28 @@ use App\Http\Controllers\UserController;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group([
+
+    'middleware' => 'api',
+    'prefix' => 'auth'
+
+], function () {
+
+    Route::post('login', 'App\Http\Controllers\AuthController@login');
+    Route::post('logout', 'App\Http\Controllers\AuthController@logout');
+    Route::post('refresh', 'App\Http\Controllers\AuthController@refresh');
+    Route::post('me', 'App\Http\Controllers\AuthController@me');
+    Route::post('payload', 'App\Http\Controllers\AuthController@payload');
+    
+
+});
+
+//Cuentas
+Route::resource('account/register', 'App\Http\Controllers\Auth\RegisterController');
+Route::get('account/user/{email}', 'App\Http\Controllers\Auth\RegisterController@nombre');
+
+//END CUENTAS
 
 Route::resources([
     'ofertas' => OfertaController::class,
