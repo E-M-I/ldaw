@@ -4,6 +4,7 @@ import axios from 'axios'
 import Swal from 'sweetalert2'
 import {makeStyles} from '@material-ui/core/styles'
 import { Button, Container, CssBaseline, Divider, Paper, TextField, Typography } from '@material-ui/core'
+import Recaptcha from 'react-recaptcha'
 
 const useStyles = makeStyles((theme)=>({
   container: {
@@ -34,6 +35,7 @@ function Login(props) {
   const [email,setEmail] = useState('');
   const [password,setPassword] = useState('');
   const classes = useStyles();
+  const isVerified = useState('');
 
   const handleEmail = (e)=>{
     setEmail(e.target.value)
@@ -83,10 +85,17 @@ function Login(props) {
             <TextField id='email' label='Correo Electrónico' value={email} onChange={handleEmail}/><br/>
             <TextField id='password' label='Contraseña' value={password} onChange={handlePassword} type='password'/><br/>
           </div>
+          <Recaptcha
+            sitekey="6LfHNvcZAAAAAIT7Y_1wO8MCeCcItE5s6C7GtXFW"
+            render="explicit"
+            verifyCallback={verifyCallback}
+            onloadCallback={callback}
+          />
           <div className={classes.button}>
             <Button variant='contained' color='primary' onClick={handleLogin} >Iniciar Sesión</Button><br/>
             <Button  color='default' onClick={() => history.push('/register')} style={{marginTop: '10px'}}>¡Regístrate!</Button>
           </div>
+
         </Paper>
       </Container>
     </div>
