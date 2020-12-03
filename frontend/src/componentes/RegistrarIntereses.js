@@ -114,7 +114,7 @@ export default function RegistrarIntereses() {
 
 
   return (
-    <div>
+    <div style={{display: "flex"}}>
       <AppDrawer />
       <br/>
       <br/>

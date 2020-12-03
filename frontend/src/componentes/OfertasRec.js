@@ -41,7 +41,7 @@ export default class OfertasRec extends React.Component{
 
     render (){
         return(
-            <div>
+            <div style={{display: "flex"}}>
                 <AppDrawer/>
                 <br/>
                 <br/>

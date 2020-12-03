@@ -51,12 +51,12 @@ export default class MisInteresesView extends React.Component{
 
     render(){
         return(
-            <div >
+            <div style={{display: 'flex'}} >
                 <AppDrawer />
                 <br/>
                 <br/>
                 <br/>
-                <Container maxWidth="md">
+                <Container maxWidth="md" >
                     <h2 align="center">Mis Intereses</h2>
                     <Card id="MensajeError" style={{ backgroundColor: '#38405F'}}>
                         <CardContent align="center">
@@ -66,12 +66,12 @@ export default class MisInteresesView extends React.Component{
                                     <Link to="register/interest"><h2 style={{color:"white"}}>Aquí puedes registrar intereses</h2></Link>
                         </CardContent> 
                     </Card>
-                    <Card style={{ backgroundColor: '#38405F'}}>
-                        <CardContent align="center" >
+                    <Card style={{ backgroundColor: '#38405F', display:'flex'}}>
+                        <CardContent align="center" style={{display: 'flex'}}>
                             <Grid container spacing={3}>
                                 {this.state.intereses.map((info)=>(
                                     
-                                <Grid item xs={4} key={info.id}>
+                                <Grid item  s={6} m={4}key={info.id} >
                                     
                                         <Paper style={{textAlign: 'center'},{padding: 10}}>
                                             <h2> {info.nombreJ} </h2>
