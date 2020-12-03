@@ -33,6 +33,7 @@ function Register(props) {
   const [password,setPassword] = useState('');
   const [fechaNacimiento,setDate] = useState('');
   const [telefono,setPhone] = useState('');
+  const [password2,setPassword2] = useState('');
   const classes = useStyles();
 
   const handleName = (e)=>{
@@ -55,32 +56,47 @@ function Register(props) {
     setDate(e.target.value)
   }
 
+  const handlePassword2 = (e)=>{
+    setPassword2(e.target.value)
+  }
+
   const handleSignup = (e)=>{
     const credentials = {
         name: name,
         email: email, 
         password: password,
+        password2: password2,
         fechaNacimiento: fechaNacimiento,
         telefono: telefono
     }
-    axios.post('http://localhost:8000/api/account/register', credentials)
-      .then(response=>{
-        Swal.fire('¡Listo!', 'Tu usuario ha sido registrado', 'success')
-        .then(() => (
-            window.location = "http://localhost:3000/login"
-        ))
-        //history.push('/login')
-      })
-      .catch(error=>{
-        console.log(error)
+    if(password == password2){
+      axios.post('http://localhost:8000/api/account/register', credentials)
+        .then(response=>{
+          Swal.fire('¡Listo!', 'Tu usuario ha sido registrado', 'success')
+          .then(() => (
+              window.location = "http://localhost:3000/login"
+          ))
+          //history.push('/login')
+        })
+        .catch(error=>{
+          console.log(error)
+          Swal.fire(
+            '¡Error!',
+            'Por favor verifica tus datos y que hayas llenado todos los campos.',
+            'error'
+            ).then(() => (
+                window.location = "http://localhost:3000/register"
+            ));
+        })
+      }else{
         Swal.fire(
           '¡Error!',
-          'Hubo un error al tratar de guardar tu usuario. Por favor verifica que hayas llenado todos los campos.',
+          'Contraseñas no coinciden',
           'error'
           ).then(() => (
               window.location = "http://localhost:3000/register"
           ));
-      })
+      }
   }
 
   return (
@@ -95,6 +111,7 @@ function Register(props) {
             <TextField id='email' label='Correo Electrónico' value={email} onChange={handleEmail}/><br/>
             <TextField id='telefono' label='Teléfono' value={telefono} onChange={handlePhone}/><br/>
             <TextField id='password' label='Contraseña' value={password} onChange={handlePassword} type='password'/><br/>
+            <TextField id='password2' label='Confirmar Contraseña' value={password2} onChange={handlePassword2} type='password'/><br/>
             <TextField id='fechaNacimiento' value={fechaNacimiento} onChange={handleDate} type='date'/><br/>
           </div>
           <div className={classes.button}>
