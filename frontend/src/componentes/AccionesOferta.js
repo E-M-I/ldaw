@@ -62,9 +62,11 @@ function saveAction ($id,$status,$idJO,$idJp){
         jp: $idJp,
         jo: $idJO
     }
-    axios.put('http://127.0.0.1:8000/api/ofertas/'+$id, values)
-        .then(res => {
-           console.log(res);
+    axios.get("http://localhost:8000/api/account/"+localStorage.getItem('email').toString())
+          .then(response => {
+              localStorage.setItem('rol', response.data[0].idRol);
+              axios.put('http://127.0.0.1:8000/api/ofertas/'+response.data[0].id, values)
+                .then(res => {
            Swal.fire(
             '¡Listo!',
             'Has decidido '+$status+ ' la oferta con éxito.',
@@ -73,6 +75,11 @@ function saveAction ($id,$status,$idJO,$idJp){
             window.location = "http://localhost:3000/offers/recieved";
             });
         })
+          })
+          .catch(error => {
+              console.log(error);
+          });
+    
     
 }
 

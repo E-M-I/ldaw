@@ -20,7 +20,6 @@ function RegistrarJuegoForm(props) {
     const classes = useStyles();
     const [titulos, setTitulos] = useState([]);
     const [consolas, setConsolas] = useState([]);
-    const [usuarios, setUsuarios] = useState([]);
     const [nombre, setNombre] = useState();
     const [tituloSelected, setTituloSelected] = useState('');
     const [consolaSelected, setConsolaSelected] = useState('');
@@ -45,10 +44,9 @@ function RegistrarJuegoForm(props) {
             console.log(e);
         })
 
-        //Obtener Usuarios
-        axios.get('http://localhost:8000/api/users')
+        axios.get("http://localhost:8000/api/account/"+localStorage.getItem('email').toString())
         .then(res => {
-            setUsuarios(res.data);
+            setUsuarioSelected(res.data[0].id);
         })
         .catch((e) => {
             console.log(e);
@@ -67,11 +65,6 @@ function RegistrarJuegoForm(props) {
     const handleConsola = (event) => {
         let idConsola = event.target.value;
         setConsolaSelected(idConsola);
-    }
-
-    const handleUsuario = (event) => {
-        let idUsuario = event.target.value;
-        setUsuarioSelected(idUsuario);
     }
 
     const handleSubmit = (event) => {
@@ -126,20 +119,6 @@ function RegistrarJuegoForm(props) {
                 {
                     consolas.map((item) => (
                         <MenuItem value={item.id} key={item.id}>{item.nombre}</MenuItem>
-                    ))
-                }
-                </Select>
-            </FormControl>
-
-            {/*
-                SELECT DE USUARIOS
-            */}
-            <FormControl className={classes.formControl}>
-                <InputLabel htmlFor="grouped-select">Usuarios</InputLabel>
-                <Select defaultValue="" id="select-usuarios" onChange={handleUsuario} name="select-usuarios">
-                {
-                    usuarios.map((item) => (
-                        <MenuItem value={item.id} key={item.id}>{item.name}</MenuItem>
                     ))
                 }
                 </Select>

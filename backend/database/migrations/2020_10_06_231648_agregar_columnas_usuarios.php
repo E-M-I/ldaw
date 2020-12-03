@@ -30,6 +30,7 @@ class AgregarColumnasUsuarios extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign('idRol');
             $table->dropColumn('idRol');
             $table->dropColumn('username');
             $table->dropColumn('telefono');

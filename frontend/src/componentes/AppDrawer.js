@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { withRouter } from 'react-router-dom';
 import clsx from 'clsx'
 
@@ -14,7 +14,8 @@ import GamesIcon from '@material-ui/icons/Games';
 import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
 import UnarchiveIcon from '@material-ui/icons/Unarchive';
 import ArchiveIcon from '@material-ui/icons/Archive';
-
+import axios from 'axios'
+import Logout from './Logout'
 const drawerWidth = 240
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -89,7 +90,73 @@ const AppDrawer = (props) => {
     const [open, setOpen] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const openMenu = Boolean(anchorEl);
+    const itemsList = [
+      {
+          text: 'Home',
+          icon: <HomeIcon />,
+          onClick: () => history.push('/')
+      },
+      {
+          text: 'Registrar juegos',
+          icon: <SportsEsportsIcon />,
+          onClick: () => history.push('/register/game')
 
+      },
+      {
+          text: 'Ofertas recibidas',
+          icon: <ArchiveIcon />,
+          onClick: () => history.push('/offers/recieved')
+  },
+  {
+          text: 'Ofertas realizadas',
+          icon: <UnarchiveIcon />,
+          onClick: () => history.push('/offers/registered')
+
+      },
+  ];
+
+  const itemsListAdmin = [
+    {
+        text: 'Home',
+        icon: <HomeIcon />,
+        onClick: () => history.push('/')
+    },
+    {
+        text: 'Registrar títulos', //solo admin
+        icon: <GamesIcon />,
+        onClick: () => history.push('/register/title')
+
+    },
+    {
+        text: 'Registrar juegos',
+        icon: <SportsEsportsIcon />,
+        onClick: () => history.push('/register/game')
+
+    },
+    {
+        text: 'Ofertas recibidas',
+        icon: <ArchiveIcon />,
+        onClick: () => history.push('/offers/recieved')
+    },
+    {
+            text: 'Ofertas realizadas',
+            icon: <UnarchiveIcon />,
+            onClick: () => history.push('/offers/registered')
+
+    },
+  ];
+    useEffect (() => {
+      // GET de companias
+      axios.get("http://localhost:8000/api/account/"+localStorage.getItem('email').toString())
+          .then(response => {
+              localStorage.setItem('rol', response.data[0].idRol);
+              localStorage.setItem('name', response.data[0].name);
+              
+          })
+          .catch(error => {
+              console.log(error);
+          });
+  }, []);
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -108,46 +175,17 @@ const AppDrawer = (props) => {
     };
 
 
-    const itemsList = [
-        {
-            text: 'Home',
-            icon: <HomeIcon />,
-            onClick: () => history.push('/')
-        },
-        {
-            text: 'Registrar títulos',
-            icon: <GamesIcon />,
-            onClick: () => history.push('/register/title')
-
-        },
-        {
-            text: 'Registrar juegos',
-            icon: <SportsEsportsIcon />,
-            onClick: () => history.push('/register/game')
-
-        },
-        {
-            text: 'Ofertas recibidas',
-            icon: <ArchiveIcon />,
-            onClick: () => history.push('/offers/recieved')
-		},
-		{
-            text: 'Ofertas realizadas',
-            icon: <UnarchiveIcon />,
-            onClick: () => history.push('/offers/registered')
-
-        },
-    ];
+    
 
     return (
         <div className={classes.root}>
-			<CssBaseline />
+			  <CssBaseline />
             <AppBar
               style={{backgroundColor: '#7a0018'}}
                 position="fixed"
                 className={clsx(classes.appBar, {
                 	[classes.appBarShift]: open,
-				})}
+				    })}
             >
                 <Toolbar>
                 <IconButton
@@ -158,74 +196,68 @@ const AppDrawer = (props) => {
                         className={clsx(classes.menuButton, {
                         [classes.hide]: open,
                         })}
-                    >
-                        <MenuIcon />
-                    </IconButton>
+                >
+                  <MenuIcon />
+                </IconButton>
                 <Typography variant="h5" noWrap >
                     DigitalGem
                 </Typography>
                 
-				<IconButton
-					aria-label="account of current user"
-					aria-controls="menu-appbar"
-					aria-haspopup="true"
-					onClick={handleMenu}
-					color="inherit"
-                >
-                    <AccountCircle />
+              <Logout style={{marginLeft: '20px'}}/>
+        
+              
+              </Toolbar>
+          </AppBar>
+          <Drawer 
+              variant="permanent"
+              className={clsx(classes.drawer, {
+              [classes.drawerOpen]: open,
+              [classes.drawerClose]: !open,
+              })}
+              classes={{
+              paper: clsx({
+              [classes.drawerOpen]: open,
+              [classes.drawerClose]: !open,
+              }),
+              }}
+          >
+              <div className={classes.toolbar}>
+                <IconButton onClick={handleDrawerClose}>
+                  {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                 </IconButton>
-					<Menu
-                        id="menu-appbar"
-                        anchorEl={anchorEl}
-                        anchorOrigin={{
-                        vertical: 'top',
-                        horizontal: 'right',
-                        }}
-                        keepMounted
-                        transformOrigin={{
-                        vertical: 'top',
-                        horizontal: 'right',
-                        }}
-                        open={openMenu}
-                        onClose={handleClose}
-                    >
-                        <MenuItem onClick={handleClose}>Perfil</MenuItem>
-                        <MenuItem onClick={handleClose}>Mi cuenta</MenuItem>
-                    </Menu>
-                
-                </Toolbar>
-            </AppBar>
-            <Drawer 
-                variant="permanent"
-                className={clsx(classes.drawer, {
-                [classes.drawerOpen]: open,
-                [classes.drawerClose]: !open,
-                })}
-                classes={{
-                paper: clsx({
-                [classes.drawerOpen]: open,
-                [classes.drawerClose]: !open,
-                }),
-                }}
-            >
-                <div className={classes.toolbar}>
-                  <IconButton onClick={handleDrawerClose}>
-                    {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-                  </IconButton>
-                </div>
-                <Divider />
-                <List>
-                  {itemsList.map((item, index) => {
-                      const { text, icon, onClick } = item;
-                      return (
-                          <ListItem button key={text} onClick={onClick}>
-                            <ListItemIcon>{icon}</ListItemIcon>
-                            <ListItemText primary={text} />
+              </div>
+              <Divider />
+              <List>
+                {
+                  localStorage.getItem('rol') != 2 ?
+                  itemsList.map((item) => {
+
+                  return(
+
+                  
+                          <ListItem button key={item.text} onClick={item.onClick}>
+                            <ListItemIcon>{item.icon}</ListItemIcon>
+                            <ListItemText primary={item.text} />
                           </ListItem>
-                      );
-                  })}
-                </List>
-            </Drawer>
+                      
+                      
+                      )})
+                      :
+                      itemsListAdmin.map((item) => {
+
+                        return(
+      
+                        
+                                <ListItem button key={item.text} onClick={item.onClick}>
+                                  <ListItemIcon>{item.icon}</ListItemIcon>
+                                  <ListItemText primary={item.text} />
+                                </ListItem>
+                            
+                            
+                            )})
+                }
+              </List>
+          </Drawer>
         </div>
     )
 }

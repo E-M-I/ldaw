@@ -26,7 +26,12 @@ export default class MisInteresesView extends React.Component{
     }
 
     getIntereses(){
-        axios.get('http://localhost:8000/api/intereses/misIntereses/' + 1)
+        var idU;
+        axios.get("http://localhost:8000/api/account/"+localStorage.getItem('email').toString())
+          .then(response => {
+              localStorage.setItem('rol', response.data[0].idRol);
+              idU = response.data[0].id;
+              axios.get('http://localhost:8000/api/intereses/misIntereses/' + response.data[0].id)
         .then(res => {
             //Recuperar todos los intereses
             res.data.forEach(element => {
@@ -37,6 +42,11 @@ export default class MisInteresesView extends React.Component{
                  document.getElementById("MensajeError").style.display = 'none';
             });
         })
+          })
+          .catch(error => {
+              console.log(error);
+          });
+        
     }
 
     render(){

@@ -18,17 +18,25 @@ export default class OfertasRec extends React.Component{
     }
 
     getOfertasRec(){
-        axios.get('http://127.0.0.1:8000/api/juegos/oferta/ofertasRec/' + 4)
-        .then(res => {
-            //Recuperar todos los intereses
-            res.data.forEach(element => {
-                console.log(element);
-                this.setState({
-                    ofertas: this.state.ofertas.concat(element)
-                 });
-                document.getElementById("MensajeError").style.display = 'none';
-            });
-        })
+        axios.get("http://localhost:8000/api/account/"+localStorage.getItem('email').toString())
+          .then(response => {
+              localStorage.setItem('rol', response.data[0].idRol);
+              axios.get('http://127.0.0.1:8000/api/juegos/oferta/ofertasRec/' + response.data[0].id)
+              .then(res => {
+                  //Recuperar todos los intereses
+                  res.data.forEach(element => {
+                      console.log(element);
+                      this.setState({
+                          ofertas: this.state.ofertas.concat(element)
+                       });
+                      document.getElementById("MensajeError").style.display = 'none';
+                  });
+              })
+          })
+          .catch(error => {
+              console.log(error);
+          });
+        
     }
 
     render (){

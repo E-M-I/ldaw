@@ -58,46 +58,59 @@ const RealizarOferta = props =>{
 function crearSelect(){
     var sel='<option value="0"><None</option>';
     const num=1;
-    axios.get("http://localhost:8000/api/juegos/oferta/1")
-      .then(function (resp){
-        console.log(resp.data);
-        //Ciclo for para obtener cada uno de los elementos
-        resp.data.forEach(element => {
-         sel = sel.concat('<option value="' + element.id + '"> ' + element.nombre + '</option> ');
-        });
-        //insertar el select en el html
-       document.getElementById("selec").innerHTML = sel;
-      } );
+    axios.get("http://localhost:8000/api/account/"+localStorage.getItem('email').toString())
+          .then(response => {
+              localStorage.setItem('rol', response.data[0].idRol);
+              axios.get("http://localhost:8000/api/juegos/oferta/"+ response.data[0].id)
+                  .then(function (resp){
+                    console.log(resp.data);
+                    //Ciclo for para obtener cada uno de los elementos
+                    resp.data.forEach(element => {
+                     sel = sel.concat('<option value="' + element.id + '"> ' + element.nombre + '</option> ');
+                    });
+                    //insertar el select en el html
+                   document.getElementById("selec").innerHTML = sel;
+                  } );
+          })
+          .catch(error => {
+              console.log(error);
+    });
+    
   }
 
   function crearOferta(){
       if(document.getElementById('selec').value != 0){
-        const values = {
-            idUO: 1,
-            idTP: juegoIdG,
-            idTO: document.getElementById('selec').value,
-            idUP: ownerG
-        }
-        axios.post("http://localhost:8000/api/ofertas", values)
-        .then(function (resp){
-            if(resp.data == 1){
-                Swal.fire(
-                    '¡Listo!',
-                    'Se creó la oferta',
-                    'success'
-                    ).then(function() {
-                    window.location = "http://localhost:3000/misIntereses";
-                    });
-            }else{
-                Swal.fire(
-                    '¡Error!',
-                    'Hubo un error al tratar de crear la oferta, intenta de nuevo',
-                    'error'
-                    ).then(function() {
-                    window.location = "http://localhost:3000/register/interest";
-                    });
+        axios.get("http://localhost:8000/api/account/"+localStorage.getItem('email').toString())
+        .then(response => {
+            localStorage.setItem('rol', response.data[0].idRol);
+            const values = {
+                idUO: response.data[0].id,
+                idTP: juegoIdG,
+                idTO: document.getElementById('selec').value,
+                idUP: ownerG
             }
-          } );
+            axios.post("http://localhost:8000/api/ofertas", values)
+            .then(function (resp){
+                if(resp.data == 1){
+                    Swal.fire(
+                        '¡Listo!',
+                        'Se creó la oferta',
+                        'success'
+                        ).then(function() {
+                        window.location = "http://localhost:3000/misIntereses";
+                        });
+                }else{
+                    Swal.fire(
+                        '¡Error!',
+                        'Hubo un error al tratar de crear la oferta, intenta de nuevo',
+                        'error'
+                        ).then(function() {
+                        window.location = "http://localhost:3000/register/interest";
+                        });
+                }
+              } );
+        });
+        
       }else{
         Swal.fire(
             '¡Error!',
