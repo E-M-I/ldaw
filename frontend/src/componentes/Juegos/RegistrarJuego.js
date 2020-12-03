@@ -11,10 +11,12 @@ const useStyles = makeStyles((theme) => ({
     },
     pageContent:{
         margin: theme.spacing(5),
-        padding: theme.spacing(3)
+        padding: theme.spacing(3),
+        backgroundColor: '#38405f'
     },
     title: {
-        textAlign: 'center'
+        textAlign: 'center',
+        color: 'white'
     },
     divider: {
         marginTop: '20px',

@@ -24,20 +24,25 @@ const useStyles = makeStyles((theme) => ({
 
 function RegistrarTitulo(props) {
     const classes = useStyles();
-    return (
-        <div className={classes.container} >
-            
-            <CssBaseline />
-            <AppDrawer />
-            <Container >
-                <Paper className={classes.pageContent}>
-                    <Typography variant="h4" className={classes.title}>Registrar Título</Typography>
-                    <Divider className={classes.divider}/>
-                    <RegistrarTituloForm />
-                </Paper>
-            </Container>
-        </div>
-    )
+    if(localStorage.getItem('idRol') == 2) {
+        return (
+            <div className={classes.container} >
+                
+                <CssBaseline />
+                <AppDrawer />
+                <Container >
+                    <Paper className={classes.pageContent}>
+                        <Typography variant="h4" className={classes.title}>Registrar Título</Typography>
+                        <Divider className={classes.divider}/>
+                        <RegistrarTituloForm />
+                    </Paper>
+                </Container>
+            </div>
+        )
+
+    } else {
+        window.location.replace("http://localhost:3000/")
+    }
 }
 
 export default RegistrarTitulo;
