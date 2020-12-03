@@ -52,6 +52,7 @@ function Login(props) {
       .then(response=>{
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('auth', true);
+        localStorage.setItem('email', email);
         window.location ="http://localhost:3000/"
       })
       .catch(error=>{

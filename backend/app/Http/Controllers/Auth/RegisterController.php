@@ -86,4 +86,13 @@ class RegisterController extends Controller
 
         $user->save();
     }
+
+    public function userInfo($email){
+        $datos= DB::table('users')
+                    ->where('users.email',$email)
+                    ->get();
+
+        return $datos;
+    }
+
 }

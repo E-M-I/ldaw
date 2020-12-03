@@ -5,9 +5,7 @@ import {Button} from '@material-ui/core'
 
 const Logout = () => {
     const logout = () => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("auth");
-
+        localStorage.clear()
         window.location ="http://localhost:3000/";
     };
       if(!localStorage.getItem('token')){

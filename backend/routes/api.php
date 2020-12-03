@@ -44,7 +44,7 @@ Route::group([
 
 //Cuentas
 Route::resource('account/register', 'App\Http\Controllers\Auth\RegisterController');
-Route::get('account/user/{email}', 'App\Http\Controllers\Auth\RegisterController@nombre');
+Route::get('account/{email}', 'App\Http\Controllers\Auth\RegisterController@userInfo');
 
 //END CUENTAS
 

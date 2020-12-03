@@ -78,15 +78,18 @@ function Register(props) {
       <CssBaseline/>
       <Container>
         <Paper className={classes.pageContent}>
-          <Typography variant='h4' className={classes.title}>Login</Typography>
+          <Typography variant='h4' className={classes.title}>Crea tu cuenta</Typography>
           <Divider className={classes.divider}/>
-          <TextField id='name' label='Nombre Completo' value={name} onChange={handleName}/><br/>
-          <TextField id='email' label='Correo Electrónico' value={email} onChange={handleEmail}/><br/>
-          <TextField id='telefono' label='Teléfono' value={telefono} onChange={handlePhone}/><br/>
-          <TextField id='password' label='Contraseña' value={password} onChange={handlePassword} type='password'/><br/>
-          <TextField id='fechaNacimiento' value={fechaNacimiento} onChange={handleDate} type='date'/><br/>
+          <div style={{alignContent: 'center', textAlign: 'center'}}>
+            <TextField id='name' label='Nombre Completo' value={name} onChange={handleName}/><br/>
+            <TextField id='email' label='Correo Electrónico' value={email} onChange={handleEmail}/><br/>
+            <TextField id='telefono' label='Teléfono' value={telefono} onChange={handlePhone}/><br/>
+            <TextField id='password' label='Contraseña' value={password} onChange={handlePassword} type='password'/><br/>
+            <TextField id='fechaNacimiento' value={fechaNacimiento} onChange={handleDate} type='date'/><br/>
+          </div>
           <div className={classes.button}>
-            <Button variant='contained' color='primary' onClick={handleSignup} >Registrar Cuenta</Button>
+            <Button variant='contained' color='primary' onClick={handleSignup} >Registrar Cuenta</Button><br />
+            <Button color='default' onClick={() => history.push('/login')} >Iniciar Sesión</Button>
           </div>
         </Paper>
       </Container>
