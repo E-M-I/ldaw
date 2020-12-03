@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import {withRouter} from 'react-router-dom'
 import axios from 'axios'
-import swal from 'sweetalert2'
+import Swal from 'sweetalert2'
 import {makeStyles} from '@material-ui/core/styles'
 import { Button, Container, CssBaseline, Divider, Paper, TextField, Typography } from '@material-ui/core'
 
@@ -65,11 +65,21 @@ function Register(props) {
     }
     axios.post('http://localhost:8000/api/account/register', credentials)
       .then(response=>{
-        
-        history.push('/login')
+        Swal.fire('¡Listo!', 'Tu usuario ha sido registrado', 'success')
+        .then(() => (
+            window.location = "http://localhost:3000/login"
+        ))
+        //history.push('/login')
       })
       .catch(error=>{
         console.log(error)
+        Swal.fire(
+          '¡Error!',
+          'Hubo un error al tratar de guardar tu usuario. Por favor verifica que hayas llenado todos los campos.',
+          'error'
+          ).then(() => (
+              window.location = "http://localhost:3000/register"
+          ));
       })
   }
 
