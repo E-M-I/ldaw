@@ -61,42 +61,67 @@ function Register(props) {
   }
 
   const handleSignup = (e)=>{
-    const credentials = {
-        name: name,
-        email: email, 
-        password: password,
-        password2: password2,
-        fechaNacimiento: fechaNacimiento,
-        telefono: telefono
-    }
-    if(password == password2){
-      axios.post('http://localhost:8000/api/account/register', credentials)
-        .then(response=>{
-          Swal.fire('¡Listo!', 'Tu usuario ha sido registrado', 'success')
-          .then(() => (
-              window.location = "http://localhost:3000/login"
-          ))
-          //history.push('/login')
-        })
-        .catch(error=>{
-          console.log(error)
+    const options = {
+      method: 'GET',
+      url: 'https://mailcheck.p.rapidapi.com/',
+      params: {domain: email},
+      headers: {
+        
+      }
+    };
+    
+    axios.request(options).then(function (response) {
+        console.log(response.data);
+        if(response.data.valid==true){
+          const credentials = {
+            name: name,
+            email: email, 
+            password: password,
+            password2: password2,
+            fechaNacimiento: fechaNacimiento,
+            telefono: telefono
+        }
+        if(password == password2){
+          axios.post('http://localhost:8000/api/account/register', credentials)
+            .then(response=>{
+              Swal.fire('¡Listo!', 'Tu usuario ha sido registrado', 'success')
+              .then(() => (
+                  window.location = "http://localhost:3000/login"
+              ))
+              //history.push('/login')
+            })
+            .catch(error=>{
+              console.log(error)
+              Swal.fire(
+                '¡Error!',
+                'Por favor verifica tus datos y que hayas llenado todos los campos.',
+                'error'
+                ).then(() => (
+                    window.location = "http://localhost:3000/register"
+                ));
+            })
+          }else{
+            Swal.fire(
+              '¡Error!',
+              'Contraseñas no coinciden',
+              'error'
+              ).then(() => (
+                  window.location = "http://localhost:3000/register"
+              ));
+          }
+        }else{
           Swal.fire(
             '¡Error!',
-            'Por favor verifica tus datos y que hayas llenado todos los campos.',
+            'El correo tiene un formato incorrecto',
             'error'
             ).then(() => (
                 window.location = "http://localhost:3000/register"
             ));
-        })
-      }else{
-        Swal.fire(
-          '¡Error!',
-          'Contraseñas no coinciden',
-          'error'
-          ).then(() => (
-              window.location = "http://localhost:3000/register"
-          ));
-      }
+        }
+    }).catch(function (error) {
+        console.error(error);
+    });
+    
   }
 
   return (
