@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Button}from '@material-ui/core';
 
 class LinkOfertas extends Component{
     owner = this.props.owner;
@@ -8,7 +9,11 @@ class LinkOfertas extends Component{
     dir = "http://localhost:3000/realizarOferta/"+this.owner+"/"+this.juegoId+"/"+this.consola+"/"+this.nombreJ;
     render(){
         return(
-            <a href={this.dir}>Hacer Oferta</a>
+            <a href={this.dir}>
+                <Button variant="contained" size="small" color="primary">
+                    Hacer oferta
+                </Button>
+            </a>
         )
     } 
 }

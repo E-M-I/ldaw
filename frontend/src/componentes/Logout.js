@@ -12,7 +12,7 @@ const Logout = () => {
         return <Redirect to='/login'/>
     }
     return (
-        <Button color="primary" variant='contained' onClick={logout}>Logout</Button>
+        <Button color="primary" style={{marginLeft: "20px"}} variant='contained' onClick={logout}>Logout</Button>
 
       );
 };

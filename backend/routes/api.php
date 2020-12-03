@@ -66,3 +66,4 @@ Route::get('companias','App\Http\Controllers\UsuarioTituloController@getCompania
 Route::get('generos','App\Http\Controllers\UsuarioTituloController@getGeneros')->name('generos');
 Route::get('juegos/oferta/{id}','App\Http\Controllers\OfertaController@getInfoJuegos')->name('juegosOferta');
 Route::get('juegos/oferta/ofertasRec/{id}','App\Http\Controllers\OfertaController@getOfertasRec')->name('ofertasRec');
+Route::get('juegos/oferta/ofertasRea/{id}','App\Http\Controllers\OfertaController@getOfertasRea')->name('ofertasRea');

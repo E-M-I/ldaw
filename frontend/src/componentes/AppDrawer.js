@@ -9,6 +9,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import MenuIcon from '@material-ui/icons/Menu'
 import AccountCircle from '@material-ui/icons/AccountCircle'
+import AssignmentIcon from '@material-ui/icons/Assignment';
 import HomeIcon from '@material-ui/icons/Home'
 import GamesIcon from '@material-ui/icons/Games';
 import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
@@ -97,6 +98,11 @@ const AppDrawer = (props) => {
           onClick: () => history.push('/')
       },
       {
+        text: 'Registrar Intereses',
+        icon: <AssignmentIcon />,
+        onClick: () => history.push('/register/interest')
+      },
+      {
           text: 'Registrar juegos',
           icon: <SportsEsportsIcon />,
           onClick: () => history.push('/register/game')
@@ -120,6 +126,11 @@ const AppDrawer = (props) => {
         text: 'Home',
         icon: <HomeIcon />,
         onClick: () => history.push('/')
+    },
+    {
+      text: 'Registrar Intereses',
+      icon: <AssignmentIcon />,
+      onClick: () => history.push('/register/interest')
     },
     {
         text: 'Registrar títulos', //solo admin

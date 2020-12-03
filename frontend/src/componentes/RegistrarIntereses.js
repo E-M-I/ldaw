@@ -36,11 +36,20 @@ function crearSelect(){
 }
 
 function tabla (){
-  var id=1;
-    axios.get("http://localhost:8000/api/intereses/personal/"+id)
+  var idU;
+        axios.get("http://localhost:8000/api/account/"+localStorage.getItem('email').toString())
+          .then(response => {
+              localStorage.setItem('rol', response.data[0].idRol);
+              idU = response.data[0].id;
+              axios.get("http://localhost:8000/api/intereses/personal/"+response.data[0].id)
           .then(function (resp){
             document.getElementById('tablaIntereses').innerHTML = resp.data;
           } );
+          })
+          .catch(error => {
+              console.log(error);
+          });
+    
 }
 
 export default function RegistrarIntereses() {
@@ -56,13 +65,18 @@ export default function RegistrarIntereses() {
 
 
   const guardarDatos = (event) => {
-      var usuarioId = 1;
-      var idT = document.getElementById('demo-simple-select-outlined').value;
+    var idU;
+    axios.get("http://localhost:8000/api/account/"+localStorage.getItem('email').toString())
+      .then(response => {
+          localStorage.setItem('rol', response.data[0].idRol);
+          var idT = document.getElementById('demo-simple-select-outlined').value;
     if(idT > 0){
         const interes = {
         idTitulo: idT,
-        idUsuario: usuarioId,
+        idUsuario: response.data[0].id,
         };
+        console.log(idT);
+        console.log(response.data[0].id)
         axios.post("http://localhost:8000/api/intereses", interes)
           .then(function (resp){
             if(resp.data == 1){
@@ -91,6 +105,11 @@ export default function RegistrarIntereses() {
             'error'
             )
     }
+      })
+      .catch(error => {
+          console.log(error);
+      });
+      
   };
 
 
@@ -98,9 +117,11 @@ export default function RegistrarIntereses() {
     <div>
       <AppDrawer />
       <br/>
+      <br/>
+      <br/>
     <Container maxWidth="md">
         <h2 align="center">Títulos de interés</h2>
-     <Card style={{ backgroundColor: '#7c7595'}}> 
+     <Card style={{ backgroundColor: '#38405F'}}> 
      <h2 align="center">Registra Un Nuevo Título De Tu Interés</h2>
       <CardContent align="center">
       <FormControl variant="outlined" className={classes.formControl}>

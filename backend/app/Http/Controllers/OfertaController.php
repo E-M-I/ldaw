@@ -103,7 +103,40 @@ class OfertaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $est;
+        $oferta = Oferta::find($id);
+        if($request->estado == "Aceptar"){
+            DB::beginTransaction();
+            try{
+                $est = "aceptado";
+                $oferta->estado = $est;
+                if($oferta->update()){
+                    $cambios = DB::table('ofertas')
+                                ->where('idJuegoPublicado', $request->jp)
+                                ->orWhere('idJuegoPublicado', $request->jo)
+                                ->orWhere('idJuegoOfertado', $request->jo)
+                                ->orWhere('idJuegoOfertado', $request->jp)
+                                ->get();
+                    foreach($cambios as $cambio){
+                        if($cambio->estado == "pendiente"){
+                            $of = Oferta::find($cambio->id);
+                            $of->estado = "rechazado";
+                            $of->update();
+                        }
+                    }
+                    DB::commit();
+                    return $cambios;
+                }
+            }catch(QueryException $ex){
+                DB::rollback();
+                return 0;
+            }
+            
+        }else{
+            $est = "rechazado";
+            $oferta->estado = $est;
+            $oferta->update();
+        }
     }
 
     /**
@@ -133,8 +166,22 @@ class OfertaController extends Controller
         ->join('juegos','ofertas.idJuegoPublicado','=','juegos.id')
         ->join('juegos as juegos1','ofertas.idJuegoOfertado','=','juegos1.id')
         ->join('consolas','consolas.id','=','juegos1.idConsolas')
-        ->where('ofertas.idUsuarioPublicado', $id)
-        ->select('ofertas.id', 'users1.username as UsuarioOf', 'juegos.nombre as JuegoPub', 'juegos1.nombre as JuegoOf', 'consolas.nombre as CJO')
+        ->where([['ofertas.idUsuarioPublicado', $id],['estado','pendiente']])
+        ->select('ofertas.id', 'users1.username as UsuarioOf', 'juegos.nombre as JuegoPub', 'juegos1.nombre as JuegoOf', 'consolas.nombre as CJO','ofertas.idJuegoPublicado', 'ofertas.idJuegoOfertado')
+        ->get();
+        return $datos;
+    }
+
+    public function getOfertasRea($id){
+        $datos = DB::table('ofertas')
+        ->join('users','ofertas.idUsuarioPublicado','=','users.id')
+        ->join('users as users1','ofertas.idUsuarioOfertado','=','users1.id')
+        ->join('juegos','ofertas.idJuegoPublicado','=','juegos.id')
+        ->join('juegos as juegos1','ofertas.idJuegoOfertado','=','juegos1.id')
+        ->join('consolas','consolas.id','=','juegos1.idConsolas')
+        ->where('ofertas.idUsuarioOfertado', $id)
+        ->select('ofertas.id','ofertas.estado', 'users.username as UsuarioPub', 'juegos.nombre as JuegoPub', 'juegos1.nombre as JuegoOf', 'consolas.nombre as CJO', 'ofertas.idJuegoPublicado', 'ofertas.idJuegoOfertado' )
+        ->orderBy('ofertas.id')
         ->get();
         return $datos;
     }

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import {Card,CardContent, Container, Grid, Paper,Button, Table, TableBody }from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import LinkOfertas from '../componentes/LinkOfertas';
+
 import AppDrawer from './AppDrawer';
 //API calls
 import axios from 'axios';
@@ -24,7 +26,12 @@ export default class MisInteresesView extends React.Component{
     }
 
     getIntereses(){
-        axios.get('http://localhost:8000/api/intereses/misIntereses/' + 1)
+        var idU;
+        axios.get("http://localhost:8000/api/account/"+localStorage.getItem('email').toString())
+          .then(response => {
+              localStorage.setItem('rol', response.data[0].idRol);
+              idU = response.data[0].id;
+              axios.get('http://localhost:8000/api/intereses/misIntereses/' + response.data[0].id)
         .then(res => {
             //Recuperar todos los intereses
             res.data.forEach(element => {
@@ -32,8 +39,14 @@ export default class MisInteresesView extends React.Component{
                 this.setState({
                     intereses: this.state.intereses.concat(element)
                  });
+                 document.getElementById("MensajeError").style.display = 'none';
             });
         })
+          })
+          .catch(error => {
+              console.log(error);
+          });
+        
     }
 
     render(){
@@ -45,6 +58,14 @@ export default class MisInteresesView extends React.Component{
                 <br/>
                 <Container maxWidth="md">
                     <h2 align="center">Mis Intereses</h2>
+                    <Card id="MensajeError" style={{ backgroundColor: '#38405F'}}>
+                        <CardContent align="center">
+                                    <h1>NO HAY INTERESES QUE MOSTRAR</h1>
+                                    <br/>
+                                    <br/>
+                                    <Link to="register/interest"><h2 style={{color:"white"}}>Aquí puedes registrar intereses</h2></Link>
+                        </CardContent> 
+                    </Card>
                     <Card style={{ backgroundColor: '#38405F'}}>
                         <CardContent align="center" >
                             <Grid container spacing={3}>
