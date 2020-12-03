@@ -23,7 +23,7 @@ function App() {
 			<Switch>
 				<Route path="/" exact="true" component={localStorage.getItem('token') && localStorage.getItem('auth') ? MisInteresesView : Login} />
 				<Route path="/register/game" exact="true" component={localStorage.getItem('token') && localStorage.getItem('auth') ? RegistrarJuego : Login} />
-				<Route path="/register/title" component={localStorage.getItem('token') && localStorage.getItem('auth') ? RegistrarTitulo : Login} />
+				<Route path="/register/title" component={localStorage.getItem('token') && localStorage.getItem('auth') ? (localStorage.getItem('rol') == 2  ? RegistrarTitulo : Home) : Login} />
         		<Route path="/misIntereses" component={localStorage.getItem('token') && localStorage.getItem('auth') ? misInteresesView : Login} />
 				<Route path="/register/interest" component={localStorage.getItem('token') && localStorage.getItem('auth') ? RegistrarIntereses : Login} />
 				<Route path="/realizarOferta/:owner/:juegoId/:consola/:nombreJ" component={localStorage.getItem('token') && localStorage.getItem('auth') ? RealizarOferta : Login} />

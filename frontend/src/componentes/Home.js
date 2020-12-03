@@ -37,7 +37,7 @@ export default function Home() {
     }, []);
     return (
         <div className={classes.container}>
-            {console.log(name)}
+            {console.log(localStorage.getItem('rol'))}
             <CssBaseline />
             <AppDrawer />
             <Container>

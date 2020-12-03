@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom';
 import { CssBaseline, Divider, makeStyles, Typography } from "@material-ui/core";
 import { Container, InputLabel, MenuItem, Paper, Select } from '@material-ui/core';
 import AppDrawer from '../AppDrawer';
@@ -24,10 +25,8 @@ const useStyles = makeStyles((theme) => ({
 
 function RegistrarTitulo(props) {
     const classes = useStyles();
-    if(localStorage.getItem('idRol') == 2) {
         return (
             <div className={classes.container} >
-                
                 <CssBaseline />
                 <AppDrawer />
                 <Container >
@@ -40,10 +39,7 @@ function RegistrarTitulo(props) {
             </div>
         )
 
-    } else {
-        window.location.replace("http://localhost:3000/")
-    }
 }
 
-export default RegistrarTitulo;
+export default withRouter(RegistrarTitulo);
 
