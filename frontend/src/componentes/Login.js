@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import {withRouter} from 'react-router-dom'
 import axios from 'axios'
-import swal from 'sweetalert2'
+import Swal from 'sweetalert2'
 import {makeStyles} from '@material-ui/core/styles'
 import { Button, Container, CssBaseline, Divider, Paper, TextField, Typography } from '@material-ui/core'
 
@@ -53,10 +53,21 @@ function Login(props) {
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('auth', true);
         localStorage.setItem('email', email);
-        window.location ="http://localhost:3000/"
+        Swal.fire('¡Bienvenido!', 'Has iniciado sesión', 'success')
+        .then(() => (
+            window.location ="http://localhost:3000/"
+        ))
+        
       })
       .catch(error=>{
         console.log(error)
+        Swal.fire(
+          '¡Error!',
+          'Hubo un error al tratar de iniciar sesión. Por favor verifica tus datos.',
+          'error'
+          ).then(() => (
+              window.location = "http://localhost:3000/login"
+          ));
       })
   }
 

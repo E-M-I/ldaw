@@ -74,17 +74,22 @@ class RegisterController extends Controller
     }
 
     public function store(Request $request){
-        $user = new User;
-        $user->name = $request->name;
-        $user->username=$request->email;
-        $user->email=$request->email;
-        $user->telefono=$request->telefono;
-        $user->password=password_hash($request->password, PASSWORD_DEFAULT);
-        $user->fechaNacimiento=$request->fechaNacimiento;
-        $user->idRol=1;
-       // $user->password=$request->password;
+        
+        if($request->input("password") == $request->input("password2")){
+            $user = new User;
+            $user->name = $request->name;
+            $user->username=$request->email;
+            $user->email=$request->email;
+            $user->telefono=$request->telefono;
+            $user->password=password_hash($request->password, PASSWORD_DEFAULT);
+            $user->fechaNacimiento=$request->fechaNacimiento;
+            $user->idRol=1;
+        // $user->password=$request->password;
 
-        $user->save();
+            $user->save();
+        }else{
+            return ["success" => false, "error" => "Contraseñas no coinciden"];
+        }
     }
 
     public function userInfo($email){
