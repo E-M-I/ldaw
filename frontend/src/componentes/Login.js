@@ -53,7 +53,11 @@ function Login(props) {
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('auth', true);
         localStorage.setItem('email', email);
-        window.location ="http://localhost:3000/"
+        Swal.fire('¡Bienvenido!', 'Has iniciado sesión', 'success')
+        .then(() => (
+            window.location ="http://localhost:3000/"
+        ))
+        
       })
       .catch(error=>{
         console.log(error)
