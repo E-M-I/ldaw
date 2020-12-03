@@ -98,9 +98,11 @@ export default function RegistrarIntereses() {
     <div>
       <AppDrawer />
       <br/>
+      <br/>
+      <br/>
     <Container maxWidth="md">
         <h2 align="center">Títulos de interés</h2>
-     <Card style={{ backgroundColor: '#7c7595'}}> 
+     <Card style={{ backgroundColor: '#38405F'}}> 
      <h2 align="center">Registra Un Nuevo Título De Tu Interés</h2>
       <CardContent align="center">
       <FormControl variant="outlined" className={classes.formControl}>
